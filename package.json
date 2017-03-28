@@ -4,7 +4,7 @@
   "description": "Proxy for assert that accepts custom Error",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "ava test"
   },
   "repository": {
     "type": "git",
@@ -19,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/invisible-tech/presume/issues"
   },
-  "homepage": "https://github.com/invisible-tech/presume#readme"
+  "homepage": "https://github.com/invisible-tech/presume#readme",
+  "devDependencies": {
+    "ava": "^0.18.2",
+    "eslint": "^3.18.0"
+  }
 }
