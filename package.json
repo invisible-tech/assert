@@ -1,6 +1,6 @@
 {
   "name": "presume",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Proxy for assert that accepts custom Error",
   "main": "index.js",
   "scripts": {
