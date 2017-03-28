@@ -1,0 +1,23 @@
+{
+  "name": "presume",
+  "version": "1.0.0",
+  "description": "Proxy for assert that accepts custom Error",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/invisible-tech/presume.git"
+  },
+  "keywords": [
+    "assert",
+    "error"
+  ],
+  "author": "Invisible Technologies, Inc.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/invisible-tech/presume/issues"
+  },
+  "homepage": "https://github.com/invisible-tech/presume#readme"
+}
