@@ -12,12 +12,12 @@ function presumify(fn) {
 }
 
 const handler = {
-  // e.g. presume.equal(...)
+  // e.g. avow.equal(...)
   get: (target, method) => presumify(target[method]),
-  // e.g. presume(...)
+  // e.g. avow(...)
   apply: (target, thisArg, args) => presumify(target).apply(thisArg, args)
 }
 
-const presume = new Proxy(assert, handler)
+const avow = new Proxy(assert, handler)
 
-module.exports = presume
+module.exports = avow
