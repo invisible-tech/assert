@@ -1,7 +1,10 @@
 {
   "name": "avow",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Proxy for assert that accepts custom Errors",
+  "engines": {
+    "node": ">=6.4.0"
+  },
   "main": "index.js",
   "scripts": {
     "test": "ava test"

@@ -2,7 +2,7 @@
 
 const assert = require('assert')
 
-function presumify(fn) {
+function avowify(fn) {
   return function (...args) {
     try { fn(...args) }
     catch (e) {
@@ -13,9 +13,9 @@ function presumify(fn) {
 
 const handler = {
   // e.g. avow.equal(...)
-  get: (target, method) => presumify(target[method]),
+  get: (target, method) => avowify(target[method]),
   // e.g. avow(...)
-  apply: (target, thisArg, args) => presumify(target).apply(thisArg, args)
+  apply: (target, thisArg, args) => avowify(target).apply(thisArg, args)
 }
 
 const avow = new Proxy(assert, handler)
