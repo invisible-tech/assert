@@ -9,15 +9,15 @@ function avowify(fn) {
       /**
        *  Node.js's assert does not allow passing of Error Objects any more
        *
-       *  See: https://github.com/nodejs/node/blob/master/lib/assert.js
-       *  As of Node v8.1.2, assert.ok (alias of just assert) is defined as
+       *  See: https://git.io/vQcv7
+       *  As of Node 8, when `assert` fails, it throws a new AssertionError.
+       *  Thus, if you pass an Error object to a call to `assert` it will ignore
+       *  it.
        *
-       *    function ok(value, message) {
-       *      if (!value) fail(value, true, message, '==', assert.ok);
-       *    }
-       *
-       *  So, in order to throw custom errors, we refer to the original
+       *  In order to throw custom errors, we refer to the original
        *  arguments passed into avow.
+       *
+       *  This will also work for Node 7 and under.
        */
       const lastArg = args[args.length - 1]
       if (lastArg instanceof Error) throw lastArg
