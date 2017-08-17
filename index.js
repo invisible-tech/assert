@@ -10,7 +10,7 @@ const getMessageIndex = fn => {
 
 function avowify(fn, methodName) {
   return function (...args) {
-    try { fn(...args) }
+    try { return fn(...args) }
     catch (e) {
       /**
        *  Node.js's assert does not allow passing of Error Objects any more
