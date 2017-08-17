@@ -2,7 +2,40 @@
 
 const assert = require('assert')
 
-function avowify(fn) {
+const messageArgumentIndex = {
+  // assert(value[, message])
+  undefined: 1,
+  // assert.deepEqual(actual, expected[, message])
+  deepEqual: 2,
+  // assert.deepStrictEqual(actual, expected[, message])
+  deepStrictEqual: 2,
+  // assert.doesNotThrow(block[, error][, message])
+  doesNotThrow: 2,
+  // assert.equal(actual, expected[, message])
+  equal: 2,
+  // Ignoring "fail" expecting message as third argument
+  // assert.fail(message)
+  // assert.fail(actual, expected[, message[, operator[, stackStartFunction]]])
+  fail: 0,
+  // assert.ifError(value)
+  ifError: Infinity,
+  // assert.notDeepEqual(actual, expected[, message])
+  notDeepEqual: 2,
+  // assert.notDeepStrictEqual(actual, expected[, message])
+  notDeepStrictEqual: 2,
+  // assert.notEqual(actual, expected[, message])
+  notEqual: 2,
+  // assert.notStrictEqual(actual, expected[, message])
+  notStrictEqual: 2,
+  // assert.ok(value[, message])
+  ok: 1,
+  // assert.strictEqual(actual, expected[, message])
+  strictEqual: 2,
+  // assert.throws(block[, error][, message])
+  throws: 2,
+}
+
+function avowify(fn, methodName) {
   return function (...args) {
     try { fn(...args) }
     catch (e) {
@@ -19,8 +52,9 @@ function avowify(fn) {
        *
        *  This will also work for Node 7 and under.
        */
-      const lastArg = args[args.length - 1]
-      if (lastArg instanceof Error) throw lastArg
+      const index = messageArgumentIndex[methodName]
+      const message = index && args[index]
+      if (message) throw message
       throw e
     }
   }
@@ -28,9 +62,9 @@ function avowify(fn) {
 
 const handler = {
   // e.g. avow.equal(...)
-  get: (target, method) => avowify(target[method]),
+  get: (target, methodName) => avowify(target[methodName], methodName),
   // e.g. avow(...)
-  apply: (target, thisArg, args) => avowify(target).apply(thisArg, args)
+  apply: (target, thisArg, args) => avowify(target, undefined).apply(thisArg, args)
 }
 
 const avow = new Proxy(assert, handler)

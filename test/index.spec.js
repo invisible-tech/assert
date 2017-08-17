@@ -36,16 +36,48 @@ test('Compatible behavior with assert', t => {
   assert.throws(() => avow.ok(false))
   assert.throws(() => avow.strictEqual(1, 2))
   assert.throws(() => avow.throws(() => null))
+  t.pass()
 })
 
-test('Object thrown', t => {
+test('Custom error objects', t => {
   const customError = Object.assign(Error('customError'), { myField: 'myKey' })
 
   try { avow(false, customError) }
   catch (e) {
     assert.notEqual(e.name, 'AssertionError')
     assert.deepStrictEqual(e, customError)
-    return
+    return t.pass()
   }
-  throw Error('Should have thrown')
+  t.fail()
+})
+
+test('POJOs', t => {
+  const pojo = { key: 'value' }
+  try { avow(false, pojo) }
+  catch (e) {
+    assert.deepStrictEqual(e, pojo)
+    return t.pass()
+  }
+  t.fail()
+})
+
+test('POJO as message', t => {
+  const pojo = { key: 'value' }
+  try { avow(false, pojo) }
+  catch (e) {
+    assert.deepStrictEqual(e, pojo)
+    return t.pass()
+  }
+  t.fail()
+})
+
+test('assert without message', t => {
+  const pojo = { key: 'value' }
+  const dummy = { dummy: 'dummy' }
+  try { avow.deepStrictEqual(dummy, pojo) }
+  catch (e) {
+    assert(e instanceof assert.AssertionError)
+    return t.pass()
+  }
+  t.fail()
 })
