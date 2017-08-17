@@ -27,5 +27,8 @@
   "devDependencies": {
     "ava": "^0.22.0",
     "eslint": "^3.18.0"
+  },
+  "dependencies": {
+    "parse-function": "^5.0.7"
   }
 }

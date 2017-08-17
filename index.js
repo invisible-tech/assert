@@ -1,38 +1,11 @@
 'use strict'
 
 const assert = require('assert')
+const { parse } = require('parse-function')()
 
-const messageArgumentIndex = {
-  // assert(value[, message])
-  undefined: 1,
-  // assert.deepEqual(actual, expected[, message])
-  deepEqual: 2,
-  // assert.deepStrictEqual(actual, expected[, message])
-  deepStrictEqual: 2,
-  // assert.doesNotThrow(block[, error][, message])
-  doesNotThrow: 2,
-  // assert.equal(actual, expected[, message])
-  equal: 2,
-  // Ignoring "fail" expecting message as third argument
-  // assert.fail(message)
-  // assert.fail(actual, expected[, message[, operator[, stackStartFunction]]])
-  fail: 0,
-  // assert.ifError(value)
-  ifError: Infinity,
-  // assert.notDeepEqual(actual, expected[, message])
-  notDeepEqual: 2,
-  // assert.notDeepStrictEqual(actual, expected[, message])
-  notDeepStrictEqual: 2,
-  // assert.notEqual(actual, expected[, message])
-  notEqual: 2,
-  // assert.notStrictEqual(actual, expected[, message])
-  notStrictEqual: 2,
-  // assert.ok(value[, message])
-  ok: 1,
-  // assert.strictEqual(actual, expected[, message])
-  strictEqual: 2,
-  // assert.throws(block[, error][, message])
-  throws: 2,
+const getMessageIndex = fn => {
+  const { args } = parse(fn)
+  return args.indexOf('message')
 }
 
 function avowify(fn, methodName) {
@@ -52,8 +25,8 @@ function avowify(fn, methodName) {
        *
        *  This will also work for Node 7 and under.
        */
-      const index = messageArgumentIndex[methodName]
-      const message = index && args[index]
+      const index = getMessageIndex(fn)
+      const message = args[index]
       if (message) throw message
       throw e
     }
