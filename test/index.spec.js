@@ -51,16 +51,6 @@ test('Custom error objects', t => {
   t.fail()
 })
 
-test('POJOs', t => {
-  const pojo = { key: 'value' }
-  try { avow(false, pojo) }
-  catch (e) {
-    assert.deepStrictEqual(e, pojo)
-    return t.pass()
-  }
-  t.fail()
-})
-
 test('POJO as message', t => {
   const pojo = { key: 'value' }
   try { avow(false, pojo) }
