@@ -1,6 +1,6 @@
 {
   "name": "avow",
-  "version": "4.0.2",
+  "version": "4.0.3",
   "description": "Proxy for assert that accepts custom Errors",
   "engines": {
     "node": ">=6.4.0"
@@ -27,5 +27,8 @@
   "devDependencies": {
     "ava": "^0.22.0",
     "eslint": "^3.18.0"
+  },
+  "dependencies": {
+    "parse-function": "^5.0.7"
   }
 }
