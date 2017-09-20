@@ -1,6 +1,6 @@
 {
-  "name": "avow",
-  "version": "4.0.3",
+  "name": "@invisible/avow",
+  "version": "4.0.4",
   "description": "Proxy for assert that accepts custom Errors",
   "engines": {
     "node": ">=6.4.0"

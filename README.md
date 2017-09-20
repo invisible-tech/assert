@@ -1,4 +1,4 @@
-# avow
+# @invisible/avow
 
 Assertion library to allow one to throw custom errors.
 
