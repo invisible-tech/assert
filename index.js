@@ -8,7 +8,7 @@ const getMessageIndex = fn => {
   return args.indexOf('message')
 }
 
-function avowify(fn, methodName) {
+function mixin(fn, methodName) {
   return function (...args) {
     try { return fn(...args) }
     catch (e) {
@@ -21,7 +21,7 @@ function avowify(fn, methodName) {
        *  it.
        *
        *  In order to throw custom errors, we refer to the original
-       *  arguments passed into avow.
+       *  arguments.
        *
        *  This will also work for Node 7 and under.
        */
@@ -34,12 +34,12 @@ function avowify(fn, methodName) {
 }
 
 const handler = {
-  // e.g. avow.equal(...)
-  get: (target, methodName) => avowify(target[methodName], methodName),
-  // e.g. avow(...)
-  apply: (target, thisArg, args) => avowify(target, undefined).apply(thisArg, args)
+  // e.g. assert.equal(...)
+  get: (target, methodName) => mixin(target[methodName], methodName),
+  // e.g. assert(...)
+  apply: (target, thisArg, args) => mixin(target, undefined).apply(thisArg, args)
 }
 
-const avow = new Proxy(assert, handler)
+const invisibleAssert = new Proxy(assert, handler)
 
-module.exports = avow
+module.exports = invisibleAssert
