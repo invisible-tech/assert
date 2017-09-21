@@ -1,5 +1,7 @@
 # @invisible/assert
 
+[![CircleCI](https://circleci.com/gh/invisible-tech/assert/tree/master.svg?style=svg&circle-token=3be7ac521e0f2fb0f6b30ca7459a4d0b5b536083)](https://circleci.com/gh/invisible-tech/assert/tree/master)
+
 Assertion library to allow one to throw custom errors.
 
 `@invisible/assert` uses ES2015 Proxies to intercept calls to `assert`.
