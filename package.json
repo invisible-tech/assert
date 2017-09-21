@@ -1,15 +1,8 @@
 {
-  "name": "@invisible/assert",
-  "version": "1.0.0",
-  "description": "Proxy for assert that accepts custom Errors",
-  "engines": {
-    "node": ">=6.4.0"
-  },
+  "name": "avow",
+  "version": "4.0.5",
+  "description": "DEPRECATED: Use @invisible/assert",
   "main": "index.js",
-  "scripts": {
-    "test": "ava test",
-    "test-watch": "ava -w test"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/invisible-tech/assert.git"
@@ -23,12 +16,5 @@
   "bugs": {
     "url": "https://github.com/invisible-tech/assert/issues"
   },
-  "homepage": "https://github.com/invisible-tech/assert#readme",
-  "devDependencies": {
-    "ava": "^0.22.0",
-    "eslint": "^3.18.0"
-  },
-  "dependencies": {
-    "parse-function": "^5.0.7"
-  }
+  "homepage": "https://github.com/invisible-tech/assert#readme"
 }
