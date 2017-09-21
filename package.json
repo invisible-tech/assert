@@ -1,6 +1,6 @@
 {
   "name": "@invisible/assert",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Proxy for assert that accepts custom Errors",
   "engines": {
     "node": ">=6.4.0"
