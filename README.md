@@ -1,8 +1,8 @@
-# avow
+# @invisible/assert
 
 Assertion library to allow one to throw custom errors.
 
-`avow` uses ES2015 Proxies to intercept calls to `assert`.
+`@invisible/assert` uses ES2015 Proxies to intercept calls to `assert`.
 All methods of `assert` are available, and it is compatible with both
 `Node.js`'s standard assertion library and the one on `npm`.
 
@@ -31,11 +31,11 @@ assert(false, Error('yohoo')
 
 _Stack-trace trimmed for readability._
 
-### `avow` throws Custom Errors properly, which is nice
+### `@invisible/assert` throws Custom Errors properly, which is nice
 
 ```js
-const avow = require('avow')
-avow(false, Error('yohoo'))
+const assert = require('assert')
+assert(false, Error('yohoo'))
 Error: yohoo
     at Object.<anonymous> (/tmp/a/index.js:2:16)
 ```
@@ -44,7 +44,9 @@ _Stack-trace trimmed for readability._
 
 ## Installation
 
-Make sure `assert` is installed. 
+```sh
+npm install @invisible/assert
+```
 
-The `npm` library `assert` is not a `dependency` in `package.json` in order to
-allow one to use `Node.js`'s standard `assert` library.
+NB: The `npm` library `assert` is not a dependency in `package.json` in order to
+allow one to use Node.js's standard `assert` library.
