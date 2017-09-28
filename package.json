@@ -9,7 +9,7 @@
   "scripts": {
     "test": "ava test",
     "test-watch": "ava -w test",
-    "posttest": "assert-version-bump"
+    "posttest": "assert-version-bump && nsp check"
   },
   "repository": {
     "type": "git",
@@ -28,7 +28,8 @@
   "devDependencies": {
     "@invisible/publish": "^1.1.1",
     "ava": "^0.22.0",
-    "eslint": "^3.18.0"
+    "eslint": "^3.18.0",
+    "nsp": "^2.8.1"
   },
   "dependencies": {
     "parse-function": "^5.0.7"
