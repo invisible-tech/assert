@@ -1,14 +1,15 @@
 {
   "name": "@invisible/assert",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Proxy for assert that accepts custom Errors",
   "engines": {
-    "node": ">=6.4.0"
+    "node": "^8.5.0"
   },
   "main": "index.js",
   "scripts": {
     "test": "ava test",
-    "test-watch": "ava -w test"
+    "test-watch": "ava -w test",
+    "posttest": "assert-version-bump"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,7 @@
   },
   "homepage": "https://github.com/invisible-tech/assert#readme",
   "devDependencies": {
+    "@invisible/publish": "^1.1.1",
     "ava": "^0.22.0",
     "eslint": "^3.18.0"
   },
