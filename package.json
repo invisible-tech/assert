@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/invisible-tech/assert#readme",
   "devDependencies": {
-    "@invisible/publish": "^1.1.1",
+    "@invisible/publish": "^1.1.6",
     "ava": "^0.22.0",
     "eslint": "^3.18.0",
     "nsp": "^2.8.1"
